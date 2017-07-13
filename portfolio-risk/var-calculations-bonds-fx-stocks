@@ -1,1 +1,46 @@
 
+# LINEAR INSTRUMENTS
+# 1. PORTFOLIO VAR
+# $ VAR = The dollar amount of money that can be lost with certain degree of probability over a certain period of time. 
+# i.e. 1 day $10,000 VAR at 5% confidence interval implies that there is a less than 5% chance that portfolio 
+# can lose $10,000 or more during 1 day given current distribution assumptions. On a distribution chart that would be 
+# a left tail with cut off set to 5%.
+
+# Linear Value-at-Risk (FX, Equities, ETFs)
+# $VAR = Portfolio $Vol * Confidence Interval =  Portfolio $ Vol * Inverse Normal CDF
+# WHERE 
+# $Vol = $ Volatility
+# Inverse Normal CDF has probability of 99%, Mean of 0 and Standard Deviation of 1)
+# Portfolio $ Volatility = Square root of Portfolio $ Variance
+# Portfolio $ Variance = [w1,..wx]*[sigma-square*sigma...]*transposed[w1,...wx] = 
+# [Vector of portfolio weights] * [variance covariance matrix of asset returns in the portfolio, => cov(x)]*transposed
+# vector of portolio weights = w'*cov(portfolio rets)*w
+
+# 2. Single Component (Undiversified VAR)
+# $ VAR = Confidence level  * Asset Volatility * $MV (Market Value)
+# Confidence Level = NormInv
+# Daily VAR = Annualized VAR / Square Root(252)
+
+# ***********************************************************************************
+# Corporate Bond VAR (Simplified)
+# Some theory for warm-up
+# $DV01 per bps = [MD * $MV]/10,000
+# $PX delta = dP/P = - MD * Yield delta = - MD * dY WHERE MD = Modified Duration, Yield delta = yield change, $PX=Bond PX
+# Sigma Volatility of PX  = Vol(dP/P) = - MD * Vol(dY) = - Modified Duration * Yield Volatility
+
+# Single component VAR
+# $VAR = Confidence level * Yield Volatility * $MV = 2.33 * Sigma(dY) * $MV = 
+# = Inverse Normal CDF (p=99%,mean=0,StDev=1) * $MV = NormInv(99%,0,1)*$MV
+
+# Portfolio VAR
+# [w1... wx] = $MV1... $MVn => $MV of each bond
+# Bond price volatility variance covariance matrix  of [Sigma price squared, sigma p1*sigma p2] where
+# Sigma price^2 = (MD * Sigma(dY))^2, and sigma p1*sigma p2 = MD1*Sigma(dY1)*MD2*Sigma(dY2)
+# Portfolio $ Variance = vector of components weights * VarCovar matrix of price sigmas * transposed vector of weights
+# Portfolio $ VAR = Squate root of $Variance * Confidence level  WHERE Confidence level (NormIjv = Inverse normal CDF)
+
+# BONDS: Breaking down idiosynchratic & interest rate risks
+# Plain Vanilla / Bullet Bond yield = Z-Spread + Benchmark Yield
+# Therefore, Portfolio $VAR = Square Root of VAR(Benchmark)^2 + VAR(Z-Spread)^2
+# Assumptions: Assuming 0% correlation between z-spreads and risk-free curve
+# Z-spread VR can be bucketed for real-time monitoring
