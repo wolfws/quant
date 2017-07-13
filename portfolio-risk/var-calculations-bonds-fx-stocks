@@ -1,10 +1,14 @@
 
 # LINEAR INSTRUMENTS
-# 1. PORTFOLIO VAR
+# 1. PORTFOLIO VAR 
 # $ VAR = The dollar amount of money that can be lost with certain degree of probability over a certain period of time. 
 # i.e. 1 day $10,000 VAR at 5% confidence interval implies that there is a less than 5% chance that portfolio 
 # can lose $10,000 or more during 1 day given current distribution assumptions. On a distribution chart that would be 
 # a left tail with cut off set to 5%.
+# In Wikipedia linguo (https://en.wikipedia.org/wiki/Value_at_risk): $1mln 5% daily VAR implies 
+# (A) less than 5% chance that portfolio loses more than $1mln in 1 day (B)
+# almost 100% "certainty" (expected) that this event will occur within 20 days. That's because 
+# Probability of 100% * 1 / 5% = 20 days, as 5% = 1 day..
 
 # Linear Value-at-Risk (FX, Equities, ETFs)
 # $VAR = Portfolio $Vol * Confidence Interval =  Portfolio $ Vol * Inverse Normal CDF
